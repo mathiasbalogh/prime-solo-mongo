@@ -25,3 +25,9 @@ db.orders.find({ dateAdded : { $lt : ISODate("2016-01-01T00:00:00:000Z")}})
 db.orders.find({ dateAdded : { $gt : ISODate("2016-01-01T00:00:00:000Z")}})
 
 // 7. Find orders with lineItems that have a quantity that is less than 50, but greater than 5.
+db.orders.find({ $and: [{"lineItems.quantity" : {$lt : 50}},{"lineItems.quantity" : {$gt : 5 }}]})
+
+// 8. Update one of your line items to 42.99.
+db.orders.update({"_id" : ObjectId("589a1dede70cf782233dc8a4")},{$set : {"lineItems.0.unitPrice": "42.99"}})
+
+// 9. Remove one of your orders.
