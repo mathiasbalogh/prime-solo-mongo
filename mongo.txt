@@ -31,3 +31,4 @@ db.orders.find({ $and: [{"lineItems.quantity" : {$lt : 50}},{"lineItems.quantity
 db.orders.update({"_id" : ObjectId("589a1dede70cf782233dc8a4")},{$set : {"lineItems.0.unitPrice": "42.99"}})
 
 // 9. Remove one of your orders.
+db.orders.remove({"_id" : ObjectId("589a1dede70cf782233dc8a4")})
